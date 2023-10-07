@@ -14,4 +14,3 @@
       $this->load->view('view-data-matakuliah', $data);
     }
   }
-?>
