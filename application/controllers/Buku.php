@@ -86,6 +86,7 @@ class Buku extends CI_Controller{
         'image' => $gambar
       ];
       $this->ModelBuku->simpanBuku($data);
+      $this->session->set_flashdata('pesan' , '<div class="alert alert-success alert-message" role="alert">Data Buku Berhasil Ditambah!!</div>');
       redirect('buku');
     }
   }
@@ -111,6 +112,7 @@ class Buku extends CI_Controller{
         'nama_kategori' => $this->input->post('kategori')
       ];
       $this->ModelBuku->simpanKategori($data); 
+      $this->session->set_flashdata('pesan' , '<div class="alert alert-success alert-message" role="alert">Kategori Anda Berhasil Ditambah!!</div>');
       redirect('buku/kategori');
     }
   }
@@ -149,6 +151,7 @@ class Buku extends CI_Controller{
         'nama_kategori' => $this->input->post('nama_kategori', true)
       ];
       $this->ModelBuku->updateKategori($data, ['id_kategori' => $this->input->post('id')] );
+      $this->session->set_flashdata('pesan' , '<div class="alert alert-success alert-message" role="alert">Kategori Anda Berhasil Diubah!!</div>');
       redirect('buku/kategori');
     }
 
@@ -158,6 +161,7 @@ class Buku extends CI_Controller{
   public function hapusKategori(){
     $where = ['id_kategori' => $this->uri->segment(3)];
     $this->ModelBuku->hapusKategori($where);
+    $this->session->set_flashdata('pesan' , '<div class="alert alert-success alert-message" role="alert">Kategori Anda Berhasil Dihapus!!</div>');
     redirect('buku/kategori');
   }
 
@@ -245,12 +249,14 @@ class Buku extends CI_Controller{
         'image' => $gambar
       ];
       $this->ModelBuku->updateBuku($data, ['id' => $this->input->post('id')]);
+      $this->session->set_flashdata('pesan' , '<div class="alert alert-success alert-message" role="alert">Data Buku Berhasil Diubah!!</div>');
       redirect('buku');
     }
   }
   public function hapusBuku(){
     $where = ['id' => $this->uri->segment(3)];
     $this->ModelBuku->hapusBuku($where);
+    $this->session->set_flashdata('pesan' , '<div class="alert alert-success alert-message" role="alert">Data Buku Berhasil Dihapus!!</div>');
     redirect('buku');
   }
 }

@@ -1,6 +1,5 @@
 <!-- Begin Page Content -->
 <div class="container-fluid">
-	<?= $this->session->flashdata('pesan'); ?>
 	<div class="row">
 		<div class="col-lg-3">
 			<?php if(validation_errors()){?>
